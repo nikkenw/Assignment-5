@@ -29,7 +29,6 @@ function addDestinationInfo(
 
 function validateInput(string) {
   if (string === "") {
-    alert("All fields required.");
     return "Empty";
   } else if (isNaN(parseInt(string))) {
     return "Not a Number";
