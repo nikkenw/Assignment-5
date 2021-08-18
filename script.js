@@ -22,10 +22,10 @@ window.addEventListener("load", function () {
       return listedPlanets;
     })
     .then(function (lp) {
-      console.log(lp);
+      //console.log(lp);
       // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
       let selectedPlanet = pickPlanet(lp);
-      console.log(selectedPlanet);
+      //console.log(selectedPlanet);
       let name = selectedPlanet.name;
       let diameter = selectedPlanet.diameter;
       let star = selectedPlanet.star;
