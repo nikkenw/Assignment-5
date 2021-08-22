@@ -54,20 +54,6 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     );
   }
 
-  // if (
-  //   validateInput(pilot.value) === "Is a Number" ||
-  //   validateInput(copilot.value) === "Is a Number"
-  // ) {
-  //   return alert("Pilot and Copilot names should be strings");
-  // }
-
-  // if (
-  //   validateInput(fuelLevel.value) === "Not a Number" ||
-  //   validateInput(cargoLevel.value) === "Not a Number"
-  // ) {
-  //   return alert("Fuel level and Cargo should be numbers.");
-  // }
-
   let fuelStatus = "Fuel level high enough for launch";
   let cargoStatus = "Cargo mass low enough for launch";
 
@@ -86,6 +72,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     cargoStatus = "Too much mass for the shuttle to take off";
   }
   if (fuelLevel.value >= 10000 && cargoLevel.value <= 10000) {
+    list.style.visibility = "hidden";
     statusHeading.style.color = "green";
     statusHeading.innerHTML = `Shuttle is ready for launch`;
   }
