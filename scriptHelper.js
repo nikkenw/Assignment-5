@@ -70,20 +70,18 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   let statusHeading = document.getElementById("launchStatus");
 
   if (fuelLevel.value < 10000) {
-    document.querySelector("#faultyItems").style.visibility = "visible";
-    //list.style.visibility = "visible";
+    faultyItemsList.style.visibility = "visible";
     statusHeading.innerHTML = `Shuttle not ready for launch`;
     statusHeading.style.color = "red";
     fuelStatus = "Not enough fuel for the journey";
   }
   if (cargoLevel.value > 10000) {
-    list.style.visibility = "visible";
+    faultyItemsList.style.visibility = "visible";
     statusHeading.innerHTML = `Shuttle not ready for launch`;
     statusHeading.style.color = "red";
     cargoStatus = "Too much mass for the shuttle to take off";
   }
   if (fuelLevel.value >= 10000 && cargoLevel.value <= 10000) {
-    //list.style.visibility = "visible";
     statusHeading.style.color = "green";
     statusHeading.innerHTML = `Shuttle is ready for launch`;
   }
@@ -94,7 +92,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 <li id="fuelStatus" data-testid="fuelStatus">${fuelStatus}</li>
 <li id="cargoStatus" data-testid="cargoStatus">${cargoStatus}</li>
 </ol>`;
-  list.innerHTML = htmlList;
+  faultyItemsList.innerHTML = htmlList;
 }
 
 async function myFetch() {
