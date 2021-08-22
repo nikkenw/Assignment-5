@@ -1,5 +1,5 @@
 // Write your helper functions here!
-require("isomorphic-fetch");
+//require("isomorphic-fetch");
 
 function addDestinationInfo(
   document,
@@ -21,10 +21,6 @@ function addDestinationInfo(
         <li>Number of Moons: ${moons}</li>
     </ol>
     <img src="${imageUrl}">`;
-  // Here is the HTML formatting for our mission target div.
-  /*
-               
-   */
 }
 
 function validateInput(string) {
@@ -38,44 +34,29 @@ function validateInput(string) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-  if (validateInput(pilot.value) !== "Not a Number") {
-    if (validateInput(pilot.value) === "Is a Number") {
-      alert("Pilot name should be a string");
-      return;
-    }
-    if (validateInput(pilot.value) === "Empty") {
-      return;
-    }
+  if (
+    validateInput(pilot.value) === "Empty" ||
+    validateInput(copilot.value) === "Empty" ||
+    validateInput(fuelLevel.value) === "Empty" ||
+    validateInput(cargoLevel.value) === "Empty"
+  ) {
+    return alert("All fields required");
   }
 
-  if (validateInput(copilot.value) !== "Not a Number") {
-    if (validateInput(copilot.value) === "Is a Number") {
-      alert("copilot name should be a string");
-      return;
-    }
-    if (validateInput(copilot.value) === "Empty") {
-      return;
-    }
+  if (validateInput(pilot.value) === "Is a Number") {
+    return alert("Pilot name should be a string");
   }
 
-  if (validateInput(fuelLevel.value) !== "Is a Number") {
-    if (validateInput(fuelLevel.value) === "Not a Number") {
-      alert("Fuel level should be a number");
-      return;
-    }
-    if (validateInput(fuelLevel.value) === "Empty") {
-      return;
-    }
+  if (validateInput(copilot.value) === "Is a Number") {
+    return alert("Copilot name should be a string.");
   }
 
-  if (validateInput(cargoLevel.value) !== "Is a Number") {
-    if (validateInput(cargoLevel.value) === "Not a Number") {
-      alert("Cargo level should be a number");
-      return;
-    }
-    if (validateInput(cargoLevel.value) === "Empty") {
-      return;
-    }
+  if (validateInput(fuelLevel.value) === "Not a Number") {
+    return alert("Fuel level should be a number");
+  }
+
+  if (validateInput(cargoLevel.value) === "Not a Number") {
+    return alert("Cargo level should be a number");
   }
 
   let fuelStatus = "Fuel level high enough for launch";
@@ -95,16 +76,15 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     statusHeading.style.color = "red";
     cargoStatus = "Too much mass for the shuttle to take off";
   }
-  if (fuelLevel.value > 10000 && cargoLevel.value < 10000) {
-    list.style.visibility = "visible";
+  if (fuelLevel.value >= 10000 && cargoLevel.value <= 10000) {
+    //list.style.visibility = "visible";
     statusHeading.style.color = "green";
     statusHeading.innerHTML = `Shuttle is ready for launch`;
   }
-  //console.log(pilot.value);
 
   let htmlList = `<ol>
-<li id="pilotStatus" data-testid="pilotStatus">${pilot.value} Ready</li>
-<li id="copilotStatus" data-testid="copilotStatus">${copilot.value} Ready</li>
+<li id="pilotStatus" data-testid="pilotStatus">Pilot ${pilot.value} is ready for launch.</li>
+<li id="copilotStatus" data-testid="copilotStatus">Copilot ${copilot.value} is ready for launch.</li>
 <li id="fuelStatus" data-testid="fuelStatus">${fuelStatus}</li>
 <li id="cargoStatus" data-testid="cargoStatus">${cargoStatus}</li>
 </ol>`;
@@ -125,7 +105,6 @@ async function myFetch() {
 
 function pickPlanet(planets) {
   let index = Math.floor(Math.random() * 5);
-  //console.log(planets[index]);
   return planets[index];
 }
 
