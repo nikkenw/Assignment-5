@@ -70,7 +70,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   let statusHeading = document.getElementById("launchStatus");
 
   if (fuelLevel.value < 10000) {
-    list.style.visibility = "visible";
+    document.querySelector("#faultyItems").style.visibility = "visible";
+    //list.style.visibility = "visible";
     statusHeading.innerHTML = `Shuttle not ready for launch`;
     statusHeading.style.color = "red";
     fuelStatus = "Not enough fuel for the journey";
