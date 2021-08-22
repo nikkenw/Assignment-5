@@ -45,17 +45,28 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
   if (
     validateInput(pilot.value) === "Is a Number" ||
-    validateInput(copilot.value) === "Is a Number"
-  ) {
-    return alert("Pilot and Copilot names should be strings");
-  }
-
-  if (
+    validateInput(copilot.value) === "Is a Number" ||
     validateInput(fuelLevel.value) === "Not a Number" ||
     validateInput(cargoLevel.value) === "Not a Number"
   ) {
-    return alert("Fuel level should be a number");
+    return alert(
+      "Incorrect input type: Pilot and Copilot should be strings, fuel level and cargo mass should be numbers."
+    );
   }
+
+  // if (
+  //   validateInput(pilot.value) === "Is a Number" ||
+  //   validateInput(copilot.value) === "Is a Number"
+  // ) {
+  //   return alert("Pilot and Copilot names should be strings");
+  // }
+
+  // if (
+  //   validateInput(fuelLevel.value) === "Not a Number" ||
+  //   validateInput(cargoLevel.value) === "Not a Number"
+  // ) {
+  //   return alert("Fuel level and Cargo should be numbers.");
+  // }
 
   let fuelStatus = "Fuel level high enough for launch";
   let cargoStatus = "Cargo mass low enough for launch";
