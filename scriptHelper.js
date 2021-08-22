@@ -40,28 +40,21 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     validateInput(fuelLevel.value) === "Empty" ||
     validateInput(cargoLevel.value) === "Empty"
   ) {
-    alert("All fields required");
-    return;
+    return alert("All fields required");
   }
 
-  if (validateInput(pilot.value) === "Is a Number") {
-    alert("Pilot name should be a string");
-    return;
+  if (
+    validateInput(pilot.value) === "Is a Number" ||
+    validateInput(copilot.value) === "Is a Number"
+  ) {
+    return alert("Pilot and Copilot names should be strings");
   }
 
-  if (validateInput(copilot.value) === "Is a Number") {
-    alert("Copilot name should be a string.");
-    return;
-  }
-
-  if (validateInput(fuelLevel.value) === "Not a Number") {
-    alert("Fuel level should be a number");
-    return;
-  }
-
-  if (validateInput(cargoLevel.value) === "Not a Number") {
-    alert("Cargo level should be a number");
-    return;
+  if (
+    validateInput(fuelLevel.value) === "Not a Number" ||
+    validateInput(cargoLevel.value) === "Not a Number"
+  ) {
+    return alert("Fuel level should be a number");
   }
 
   let fuelStatus = "Fuel level high enough for launch";
@@ -70,13 +63,13 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
   let statusHeading = document.getElementById("launchStatus");
 
   if (fuelLevel.value < 10000) {
-    faultyItemsList.style.visibility = "visible";
+    list.style.visibility = "visible";
     statusHeading.innerHTML = `Shuttle not ready for launch`;
     statusHeading.style.color = "red";
     fuelStatus = "Not enough fuel for the journey";
   }
   if (cargoLevel.value > 10000) {
-    faultyItemsList.style.visibility = "visible";
+    list.style.visibility = "visible";
     statusHeading.innerHTML = `Shuttle not ready for launch`;
     statusHeading.style.color = "red";
     cargoStatus = "Too much mass for the shuttle to take off";
@@ -92,7 +85,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 <li id="fuelStatus" data-testid="fuelStatus">${fuelStatus}</li>
 <li id="cargoStatus" data-testid="cargoStatus">${cargoStatus}</li>
 </ol>`;
-  faultyItemsList.innerHTML = htmlList;
+  list.innerHTML = htmlList;
 }
 
 async function myFetch() {
