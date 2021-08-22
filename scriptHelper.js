@@ -40,23 +40,28 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     validateInput(fuelLevel.value) === "Empty" ||
     validateInput(cargoLevel.value) === "Empty"
   ) {
-    return alert("All fields required");
+    alert("All fields required");
+    return;
   }
 
   if (validateInput(pilot.value) === "Is a Number") {
-    return alert("Pilot name should be a string");
+    alert("Pilot name should be a string");
+    return;
   }
 
   if (validateInput(copilot.value) === "Is a Number") {
-    return alert("Copilot name should be a string.");
+    alert("Copilot name should be a string.");
+    return;
   }
 
   if (validateInput(fuelLevel.value) === "Not a Number") {
-    return alert("Fuel level should be a number");
+    alert("Fuel level should be a number");
+    return;
   }
 
   if (validateInput(cargoLevel.value) === "Not a Number") {
-    return alert("Cargo level should be a number");
+    alert("Cargo level should be a number");
+    return;
   }
 
   let fuelStatus = "Fuel level high enough for launch";
